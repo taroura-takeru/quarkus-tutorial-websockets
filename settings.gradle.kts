@@ -9,5 +9,12 @@ pluginManagement {
     plugins {
         id(quarkusPluginId) version quarkusPluginVersion
     }
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == "io.quarkus") {
+                useModule("io.quarkus:quarkus-gradle-plugin:${requested.version}")
+            }
+        }
+    }
 }
 rootProject.name="websockets-next-quickstart"
